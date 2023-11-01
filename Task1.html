@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice:</title>
+  <style>
+    #box {
+      background: lightblue;
+      height: 100px;
+      width: 100px;
+      margin: 6px;
+    }
+    #fadeParagraph {
+      cursor: pointer;
+    }
+    #myDiv {
+      height: 200px;
+      width: 200px;
+      border: 1px solid black;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>1. Click on button or icon to show hide enter password text in input box</h1>
+  <input type="password" id="password">
+  <button id="toggle-password">Hide</button>
+
+  <h1>2. Disable the submit button until the visitor has clicked a check box.</h1>
+  <input type="checkbox" id="checkbox">
+  <input type="submit" value="Submit" id="submit-button" disabled>
+
+
+  <h1>3. Scroll to the top of the page with jQuery.</h1>
+  <p>Lorem <br> ipsum <br>dolor <br> sit <br>amet <br>consectetur <br>adipisicing <br> elit. <br> Vitae <br> atque br 
+    <br>consequatur  <br>expedita <br> porro <br> exercitationem  <br>molestias <br>architecto <br>blanditiis!br <br>Nemo <br>enim <br>perferendis <br>ipsam <br>repudiandae <br>repellat <br>recusandae <br>natus <br>labore <br>earum, <br>optio <br>blanditiis <br>totam!</p>
+    <br>consequatur  <br>expedita <br> porro <br> exercitationem  <br>molestias <br>architecto <br>blanditiis!br <br>Nemo <br>enim <br>perferendis <br>ipsam <br>repudiandae <br>repellat <br>recusandae <br>natus <br>labore <br>earum, <br>optio <br>blanditiis <br>totam!</p>
+    <br>consequatur  <br>expedita <br> porro <br> exercitationem  <br>molestias <br>architecto <br>blanditiis!br <br>Nemo <br>enim <br>perferendis <br>ipsam <br>repudiandae <br>repellat <br>recusandae <br>natus <br>labore <br>earum, <br>optio <br>blanditiis <br>totam!</p>
+
+  <a href="#top" style="color: red;">Scroll to Top</a>
+
+
+  <h1>4. Set background-image using jQuery CSS property.</h1>
+  <div id="myDiv"></div>
+
+  <h1>5. Limit character input in the text area including count.</h1>
+
+  <textarea id="textarea" maxlength="n"></textarea>
+  <span id="anyid">15</span> characters remaining
+
+  <h1>6. Animates a paragraph to fade to an specified opacity (complete the animation within n milliseconds).</h1>
+  <p id="fadeParagraph">Click this paragraph to see it fade.</p>
+
+
+  <h1>7. Animate an element, by changing its height and width.</h1>
+  <button id="btn1">Animate height & width</button>
+  <button id="btn2">Reset</button>
+  <div id="box"></div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+  $("#toggle-password").click(function() {
+    var passwordInput = $("#password");
+    if (passwordInput.attr("type") === "password") {
+      passwordInput.attr("type", "text");
+      $(this).text("Hide");
+    } else {
+      passwordInput.attr("type", "password");
+      $(this).text("Show");
+    }
+  });
+});
+$(document).ready(function() {
+  $("#checkbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#submit-button").removeAttr("disabled");
+    } else {
+      $("#submit-button").attr("disabled", "disabled");
+    }
+  });
+});
+
+$(document).ready(function() {
+      $("#top").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, 500);
+      });
+    });
+
+    $(document).ready(function() {
+  $("#textarea").keyup(function() {
+    var remainingCharacters = $("#textarea").attr("maxlength") - $("#textarea").val().length;
+    $("#anyid").text(remainingCharacters + " characters remaining");
+  });
+});
+
+$(document).ready(function() {
+  $("#my-paragraph").click(function() {
+    $(this).animate({ opacity: 0.5 }, 1000); // Fade to 50% opacity over 1000 milliseconds
+  });
+});
+
+
+$(document).ready(function() {
+      $('#btn1').click(function() {
+        $('#box').animate({ height: '200px', width: '200px' }, 'slow');
+      });
+
+      $('#btn2').click(function() {
+        $('#box').animate({ height: '100px', width: '100px' }, 'slow');
+      });
+    });
+
+
+    $(document).ready(function() {
+      $('#fadeParagraph').click(function() {
+        var fadeDuration = 1000; // Set the duration in milliseconds
+        $(this).animate({ opacity: 0 }, fadeDuration);
+      });
+    });
+    $(document).ready(function() {
+      var imageUrl = "https://kartinki.cc/files/img/post/7966/bol-3.webp"; // Replace with the actual URL of your image
+      $('#myDiv').css('background-image', 'url("' + imageUrl + '")');
+    });
+    
+
+  </script>
+
+</body>
+</html>
